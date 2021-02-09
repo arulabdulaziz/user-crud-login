@@ -1,0 +1,11 @@
+version: '3'
+
+services: 
+  users:
+    build: './services/users'
+    ports: 
+      - '3001:3001'
+  orchestrator: 
+    build: './orchestrator'
+    ports: 
+      - '3000:3000'
