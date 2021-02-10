@@ -1,11 +1,20 @@
-version: '3'
+version: "3"
 
-services: 
+services:
+  postgres_db:
+    image: "postgres:latest"
+    environment:
+      - POSTGRES_USERNAME: "postgres"
+      - POSTGRES_PASSWORD: "postgres"
   users:
-    build: './services/users'
-    ports: 
-      - '3001:3001'
-  orchestrator: 
-    build: './orchestrator'
-    ports: 
-      - '3000:3000'
+    depends_on:
+      - postgres_db
+    build: "./services/users"
+    ports:
+      - "3001:3001"
+  orchestrator:
+    depends_on:
+      - postgres_db
+    build: "./orchestrator"
+    ports:
+      - "3000:3000"

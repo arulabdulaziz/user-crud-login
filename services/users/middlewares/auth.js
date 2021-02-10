@@ -15,9 +15,11 @@ class Auth {
     }
   }
   static authenticationAdmin(req, res, next) {
-    if (req.loggedInUser.role !== "admin")
+    if (req.loggedInUser.role !== "admin"){
       res.status(403).json({ message: "You Not Admin" });
-    next();
+    }else{
+      next();
+    }
   }
 }
 module.exports = Auth;
