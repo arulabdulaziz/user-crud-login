@@ -13,8 +13,6 @@ services:
     ports:
       - "3001:3001"
   orchestrator:
-    depends_on:
-      - postgres_db
     build: "./orchestrator"
     ports:
       - "3000:3000"
